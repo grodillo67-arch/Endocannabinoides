@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El sistema endocannabinoide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6ef; --surface:#e6ede0; --ink:#1d2b24; --muted:#52645a;
+  --green:#2f6b4f; --lilac:#7a5fa8; --line:#c9d5c3; --link:#2a5d8f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#131b17; --surface:#1b2620; --ink:#e4ece6; --muted:#9db0a4;
+    --green:#6fcf9f; --lilac:#b39ae0; --line:#2e3d34; --link:#8ec0f0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131b17; --surface:#1b2620; --ink:#e4ece6; --muted:#9db0a4;
+  --green:#6fcf9f; --lilac:#b39ae0; --line:#2e3d34; --link:#8ec0f0;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,6vw,4.2rem)}
+h2{font-size:clamp(1.6rem,3.5vw,2.3rem);margin-top:0}
+h3{font-size:1.2rem}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+nav{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav .wrap{display:flex;gap:20px;overflow-x:auto;padding-top:12px;padding-bottom:12px;white-space:nowrap}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--green)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:56px 0 48px}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:52ch}
+.hero svg{width:100%;height:auto}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.col{background:var(--surface);padding:22px;border-radius:14px}
+.col h3{color:var(--green)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.two svg{width:100%;height:auto}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{font:inherit;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--green);color:var(--bg);border-color:var(--green)}
+.panel{background:var(--surface);border-radius:14px;padding:22px}
+.panel[hidden]{display:none}
+.timeline{list-style:none;padding:0;margin:0;border-left:3px solid var(--lilac)}
+.timeline li{padding:0 0 18px 20px;position:relative}
+.timeline b{font-family:Fraunces,serif;color:var(--lilac)}
+.links{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0;list-style:none}
+.links a{display:block;padding:16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);height:100%}
+.links a:hover{border-color:var(--green)}
+.links span{display:block;color:var(--muted);font-size:.92rem;margin-top:4px}
+.note{border-left:4px solid var(--lilac);padding:10px 16px;background:var(--surface);border-radius:0 10px 10px 0;color:var(--muted);font-size:.95rem}
+footer{padding:30px 0 50px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media(max-width:760px){.hero,.two,.cols,.links{grid-template-columns:1fr}.hero{padding-top:32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Secciones"><div class="wrap">
+<a href="#que-es">Qué es</a><a href="#componentes">Componentes</a><a href="#funciones">Funciones</a><a href="#cuerpo">En el cuerpo</a><a href="#historia">Historia</a><a href="#mas">Leer más</a>
+</div></nav>
+
+<main class="wrap">
+<header class="hero">
+  <div>
+    <h1>El sistema endocannabinoide</h1>
+    <p>Una red de señales químicas que tu cuerpo fabrica por sí mismo para mantener el equilibrio: sueño, apetito, dolor, estado de ánimo y memoria. Su nombre viene de la planta que ayudó a descubrirlo, pero existe en todas las personas.</p>
+  </div>
+  <svg viewBox="0 0 400 340" role="img" aria-label="Ilustración de dos neuronas conectadas por una sinapsis con moléculas de señalización">
+    <defs><radialGradient id="g1"><stop offset="0" stop-color="#7a5fa8" stop-opacity=".35"/><stop offset="1" stop-color="#7a5fa8" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="200" cy="170" r="150" fill="url(#g1)"/>
+    <path d="M40 60 C110 40 150 110 195 150" stroke="#2f6b4f" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <ellipse cx="195" cy="150" rx="46" ry="30" fill="#2f6b4f"/>
+    <path d="M360 290 C290 300 250 230 205 195" stroke="#7a5fa8" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <ellipse cx="205" cy="200" rx="46" ry="30" fill="#7a5fa8"/>
+    <g fill="#f3f6ef" stroke="#2f6b4f" stroke-width="2"><circle cx="185" cy="144" r="5"/><circle cx="205" cy="152" r="5"/><circle cx="195" cy="160" r="4"/></g>
+    <g fill="#e8a33d"><circle cx="170" cy="182" r="5"><animate attributeName="cy" values="198;172;198" dur="4s" repeatCount="indefinite"/></circle><circle cx="205" cy="176" r="5"><animate attributeName="cy" values="196;170;196" dur="5s" repeatCount="indefinite"/></circle><circle cx="232" cy="180" r="5"><animate attributeName="cy" values="198;172;198" dur="4.5s" repeatCount="indefinite"/></circle></g>
+    <text x="250" y="130" fill="currentColor" font-size="13" font-family="Instrument Sans, sans-serif">neurona emisora</text>
+    <text x="40" y="250" fill="currentColor" font-size="13" font-family="Instrument Sans, sans-serif">neurona receptora</text>
+  </svg>
+</header>
+
+<section id="que-es">
+  <h2>¿Qué es y para qué sirve?</h2>
+  <div class="two">
+    <div>
+      <p>El sistema endocannabinoide (SEC) es un sistema de comunicación celular presente en el cerebro, los órganos, el sistema inmune y la piel. Su trabajo principal es la <strong>homeostasis</strong>: ayudar a que el organismo vuelva a su punto de equilibrio cuando algo lo desajusta.</p>
+      <p>Funciona de manera distinta a otros mensajeros como la dopamina: las señales endocannabinoides suelen viajar <em>hacia atrás</em>, desde la neurona receptora hacia la emisora, para regular cuánto se comunican.</p>
+    </div>
+    <svg viewBox="0 0 360 260" role="img" aria-label="Esquema de señal retrógrada entre neuronas">
+      <rect x="20" y="20" width="320" height="70" rx="35" fill="#2f6b4f" opacity=".85"/>
+      <rect x="20" y="170" width="320" height="70" rx="35" fill="#7a5fa8" opacity=".85"/>
+      <text x="180" y="62" text-anchor="middle" fill="#fff" font-size="15" font-family="Instrument Sans, sans-serif">Neurona presináptica (recibe el mensaje)</text>
+      <text x="180" y="212" text-anchor="middle" fill="#fff" font-size="15" font-family="Instrument Sans, sans-serif">Neurona postsináptica (lo produce)</text>
+      <g stroke="#e8a33d" stroke-width="4" fill="#e8a33d"><line x1="180" y1="165" x2="180" y2="105"/><polygon points="180,96 170,114 190,114" stroke="none"/></g>
+      <text x="196" y="140" fill="currentColor" font-size="14" font-family="Instrument Sans, sans-serif">señal retrógrada</text>
+    </svg>
+  </div>
+</section>
+
+<section id="componentes">
+  <h2>Los tres componentes</h2>
+  <div class="cols">
+    <div class="col"><h3>Endocannabinoides</h3><p>Moléculas que el cuerpo fabrica a demanda a partir de grasas de la membrana celular. Las dos principales son la <strong>anandamida</strong> y el <strong>2-AG</strong>.</p></div>
+    <div class="col"><h3>Receptores</h3><p>Proteínas en la superficie de las células. <strong>CB1</strong> abunda en el sistema nervioso; <strong>CB2</strong> es más frecuente en células del sistema inmune.</p></div>
+    <div class="col"><h3>Enzimas</h3><p>Sintetizan y degradan los endocannabinoides. <strong>FAAH</strong> descompone la anandamida y <strong>MAGL</strong> el 2-AG, para que la señal dure lo justo.</p></div>
+  </div>
+</section>
+
+<section id="funciones">
+  <h2>Qué regula</h2>
+  <div class="tabs" role="tablist" aria-label="Funciones">
+    <button role="tab" aria-selected="true" data-p="p1">Sueño y ánimo</button>
+    <button role="tab" aria-selected="false" data-p="p2">Apetito</button>
+    <button role="tab" aria-selected="false" data-p="p3">Dolor e inflamación</button>
+    <button role="tab" aria-selected="false" data-p="p4">Memoria y estrés</button>
+  </div>
+  <div class="panel" id="p1"><h3>Sueño y estado de ánimo</h3><p>El SEC participa en los ciclos de sueño y vigilia y en la respuesta emocional. Se investiga su relación con la ansiedad y la depresión, aunque aún no hay conclusiones definitivas.</p></div>
+  <div class="panel" id="p2" hidden><h3>Apetito y metabolismo</h3><p>La activación de CB1 se asocia con más hambre y con el almacenamiento de energía. Por eso los primeros fármacos que bloqueaban CB1 buscaban reducir el apetito, pero se retiraron por efectos psiquiátricos adversos.</p></div>
+  <div class="panel" id="p3" hidden><h3>Dolor e inflamación</h3><p>Los receptores CB1 y CB2 modulan cómo se percibe el dolor y cómo responde el sistema inmune ante una lesión. Es una de las áreas con más investigación clínica.</p></div>
+  <div class="panel" id="p4" hidden><h3>Memoria y respuesta al estrés</h3><p>En el hipocampo y la amígdala, los endocannabinoides ayudan a decidir qué recuerdos se consolidan y a "apagar" la reacción de estrés cuando la amenaza pasó.</p></div>
+</section>
+
+<section id="cuerpo">
+  <h2>Dónde se encuentra</h2>
+  <div class="two">
+    <svg viewBox="0 0 280 340" role="img" aria-label="Silueta humana con cerebro, sistema inmune e intestino marcados">
+      <circle cx="140" cy="48" r="32" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M140 80 L140 210 M140 110 L80 170 M140 110 L200 170 M140 210 L100 310 M140 210 L180 310" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="140" cy="48" r="16" fill="#7a5fa8"/>
+      <circle cx="140" cy="125" r="14" fill="#e8a33d"/>
+      <circle cx="140" cy="180" r="16" fill="#2f6b4f"/>
+      <g font-size="13" fill="currentColor" font-family="Instrument Sans, sans-serif"><text x="185" y="52">Cerebro (CB1)</text><text x="165" y="130">Sistema inmune (CB2)</text><text x="165" y="186">Intestino</text></g>
+    </svg>
+    <div>
+      <p>Los receptores están repartidos por casi todo el cuerpo, lo que explica por qué el sistema influye en funciones tan distintas.</p>
+      <ul>
+        <li><strong>Cerebro y médula espinal:</strong> percepción del dolor, memoria, coordinación.</li>
+        <li><strong>Sistema inmune:</strong> regulación de la inflamación.</li>
+        <li><strong>Tubo digestivo:</strong> motilidad y apetito.</li>
+        <li><strong>Piel y tejido graso:</strong> barrera cutánea y metabolismo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <h2>Cómo se descubrió</h2>
+  <ul class="timeline">
+    <li><b>1964</b> — Raphael Mechoulam y Yehiel Gaoni aíslan el THC, el principal compuesto psicoactivo del cannabis.</li>
+    <li><b>1988–1990</b> — Se identifica el receptor CB1 en el cerebro y se clona su gen.</li>
+    <li><b>1992</b> — Se descubre la anandamida, el primer endocannabinoide, en cerebro de cerdo.</li>
+    <li><b>1993–1995</b> — Se describe el receptor CB2 y se identifica el 2-AG.</li>
+  </ul>
+  <p class="note">El cuerpo no necesita cannabis para tener este sistema: la planta simplemente contiene moléculas, como el THC y el CBD, que interactúan con él. Esas interacciones son complejas y los efectos varían según la dosis y la persona.</p>
+</section>
+
+<section id="mas">
+  <h2>Para seguir leyendo</h2>
+  <ul class="links">
+    <li><a href="https://es.wikipedia.org/wiki/Sistema_endocannabinoide" target="_blank" rel="noopener">Sistema endocannabinoide en Wikipedia<span>Artículo general en español.</span></a></li>
+    <li><a href="https://es.wikipedia.org/wiki/Anandamida" target="_blank" rel="noopener">Anandamida<span>El primer endocannabinoide descubierto.</span></a></li>
+    <li><a href="https://es.wikipedia.org/wiki/Receptor_cannabinoide" target="_blank" rel="noopener">Receptores cannabinoides<span>CB1 y CB2 explicados.</span></a></li>
+    <li><a href="https://es.wikipedia.org/wiki/Raphael_Mechoulam" target="_blank" rel="noopener">Raphael Mechoulam<span>El científico que aisló el THC.</span></a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=endocannabinoid+system" target="_blank" rel="noopener">PubMed: estudios científicos<span>Búsqueda de artículos revisados por pares.</span></a></li>
+    <li><a href="https://nida.nih.gov/" target="_blank" rel="noopener">NIDA (EE. UU.)<span>Instituto Nacional sobre el Abuso de Drogas.</span></a></li>
+  </ul>
+</section>
+</main>
+
+<footer><div class="wrap">Contenido educativo, no sustituye el consejo médico. Si tienes dudas sobre tu salud o sobre el uso de cannabinoides, consulta a un profesional.</div></footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.panel').forEach(function(p){p.hidden=true});
+    b.setAttribute('aria-selected','true');
+    document.getElementById(b.dataset.p).hidden=false;
+  });
+});
+</script>
+</body>
+</html>
